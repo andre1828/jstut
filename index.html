@@ -1,0 +1,446 @@
+<!--TODO  animação de zoom no titulo do tópico ao ser direcionado pelo link do índice. -->
+<!--TODO  Menu estilo tiles substituindo o indice -->
+<!--TODO  hospedar tutorial no github pages com endereço 'jstut' -->
+<!--TODO  subistituir codigos de exemplo por jsfiddle interativos  -->
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="third_libs/picnic.css">
+  <link rel="stylesheet" href="third_libs/prism.css">
+  <link rel="stylesheet" href="mycss.css">
+</head>
+
+<body class="full">
+  <div class="centralize">
+    <h1>Tutorial de javaScript</h1>
+    <ul>
+      <li>
+        <a href='#variaveis'>Variaveis</a>
+      </li>
+        <li>
+          <a href="#objetos-prototipagem">Objetos e prototipagem</a>
+        </li>
+      <li>
+        <a href='#arrays'>Arrays</a>
+      </li>
+      <li>
+        <a href='#maps'>Maps</a>
+      </li>
+      <li>
+        <a href='#estruturas-repeticao'>Estruturas de repetição</a>
+      </li>
+      <li>
+        <a href='#manipulando-dom'>Manipulando o DOM</a>
+      </li>
+       <li>
+        <a href='#funcoes'>Funções</a>
+      </li>
+      <li>
+        <a href='#funcoes-primeira-ordem'>Funções de primeira ordem</a>
+      </li>
+      <li>
+        <a href='#respondendo-eventos'>Respondendo a eventos</a>
+      </li>
+    </ul>
+
+    <!--<div class="bs-callout bs-callout-primary">
+      <h3>Hey,antes de começar, aperte F12 e vá para a aba do console para testar alguns comandos durante o tutorial ;)</h3>
+    </div>-->
+
+    <p>
+      <h3 id="variaveis">Variaveis</h3>
+    </p>
+
+    <p>Os tipos de dados que veremos em javascript são :</p>
+    <ul>
+      <li>Number</li>
+      <li>String</li>
+      <li>Boolean</li>
+      <li>Null</li>
+      <li>Undefined</li>
+      <li>Object</li>
+    </ul>
+
+   <div class="box">
+      <p>Number: sempre representa um double de precisão dupla.</p>
+      <p>String: um array de caracteres, pode ser representado por aspas simples ou duplas.</p>
+      <p>Boolean: sempre possui os valores true ou false.</p>
+      <p>Null: um objeto especial que representa ausencia de valor.</p>
+      <p>Undefined: valor inicial de qualquer variavel que tenha sido declarada, porém não inicializada.</p>
+      <p>Object: uma estrutura de dados que possui informações e métodos para processamento de informações.</p>
+
+      <div class="bs-callout bs-callout-danger">Atenção : Undefined é um tipo primitivo, enquanto Null é um objeto</div>
+   </div>
+
+    <div class="box">
+      <p>A criação de variáveis segue a seguinte sintaxe :</p>
+
+      <div class="card">
+        <code class="language-javascript"> var minhaVariavel = "string qualquer" ;</code>
+      </div>
+      <!--<p>Tente você, crie uma variavel chamada "<code>minhaVariavel</code>" com o valor que quiser.</p>-->
+      <!--<code id="var-creation-reaction" style="display: none">Boa! parece que voce conseguiu, vamos para o proximo passo</code>-->
+    </div>
+
+    <div class="box">
+      <h3 id="objetos-prototipagem">Objetos e prototipagem</h3>
+        <p>O programador que está familiarizado com a programação orientada a objetos, deve (espera-se) está confortável com o conceito de objeto e classe.
+           Mas e a programação orientada a protótipos? Vamos falar sobre esse estilo de programação e como ele funciona em javascript.</p>
+
+        <p>A programação orientada a prototipos é tambem chamada de "sem classes" e "orientada a instancias", esses nomes nos dão algumas dicas.</p>
+
+        <p>Nesse estilo de programação o foco está nas instancias, não existem classes, cria-se objetos como se cria variáveis.</p>
+
+        <p>Observe o exemplo :</p>
+
+        <pre>
+          <code class="language-javascript">
+            var pessoa = {};
+            console.log(typeof pessoa); // exibe "object" no console
+          </code>
+        </pre>
+
+        <p>Nesse exemplo é criado um objeto vazio chamado "pessoa".E os atributos? Vamos criar alguns agora :</p>
+
+        <pre>
+          <code class="language-javascript">
+            var pessoa = {};
+            pessoa.nome = "José";
+            pessoa.sobrenome = "Sarapatiaguara";
+            pessoa.idade = 40;
+
+            console.log(pessoa.nome)  // exibe "José" no console
+            console.log(pessoa)       // exibe Object {idade: 40, sobrenome: "Sarapatiaguara", nome: "José"} no console
+          </code>
+        </pre>
+
+        <p>Sem classe, adicionamos atributos ao objeto como se eles já existissem, apenas usando a sintaxe
+          "<span style="color: #6C7A89; font: code">nomeDoObjeto</span>.<span style="color: #446CB3; font: code">novoAtributo</span> = <span style="color : #03C9A9; font: code">valor</span>"
+        </p>
+
+    </div>
+
+    <div class="box">
+      <h3 id="arrays">Arrays</h3>
+
+      <p>É possivel criar arrays da seguinte forma</p>
+
+      <div class="card">
+        <code class="language-javascript">var meuArray = [1,2,3];</code>
+      </div>
+
+      <!--<p>Crie um array chamado "meuArray" com os valores que desejar</p>-->
+      <p id="array-creation-reaction" hidden></p>
+
+      <p>em javascript, um array pode conter varios valores de tipos diferentes, inclusive outros arrays</p>
+
+      <div class="card">
+        <code class="language-javascript">var meuArray = [1, 2, 3, ' 4 ', true, [ 5, 6 ] ];</code>
+      </div>
+
+      <p>Para acessar o valor de um index em um array : </p>
+
+      <div class="card">
+        <pre>
+          <code class="language-javascript">
+            meuArray[0];   // retorna 1
+            meuArray[4];   // retorna true
+          </code>
+        </pre>
+      </div>
+
+      <p>Para mudar o valor de um index em um array : </p>
+
+      <div class="card">
+        <pre>
+          <code class="language-javascript">
+            meuArray[0] = 99;       // meuArray = [99, 2, 3, '4', true, [5,6]]
+            meuArray[4] = false;    // meuArray = [99, 2, 3, '4', false, [5,6]]
+          </code>
+        </pre>
+      </div>
+
+      <p>Alguns metodos disponiveis para realizar operações em arrays são :</p>
+
+      <ul>
+        <li>Push : Adicionar algo ao array</li>
+        <li>Splice : Eliminar algo de um array</li>
+        <li>Join : converte todos os valores para string e os combina</li>
+      </ul>
+
+      <p>Array.push() recebe como argumentos o valor a ser adicionado e retorna o novo tamanho do array</p>
+
+      <div class="card">
+        <pre>
+          <code class="language-javascript">
+          var arrayQualquer = ['a','b','c'];
+          arrayQualquer.push('MyProject'); // arrayQualquer = ['a', 'b', 'c', "MyProject"]; e retorna 4
+          </code>
+        </pre>
+      </div>
+
+      <!--<p>para testar o metodo push crie um array chamado "novoArray" vazio , e em seguida acrescente nele oque desejar</p>-->
+
+      <p id="array-push-reaction"></p>
+
+      <p>Array.splice() recebe como argumentos o indice e a quantidade de itens a serem removidos a partir do indice dado. E retorna
+        um array com os itens removidos.
+      </p>
+
+      <div class="card">
+        <pre>
+          <code class="language-javascript">
+            arrayQualquer.splice(1, 3); // arrayQualquer = ['a']
+                                        // retorna ['b', 'c', "MyProject"]
+          </code>
+        </pre>
+      </div>
+
+      <!--<p>tente remover um dos itens que você adicionou ao seu novoArray usando o metodo splice()</p>
+      <p>em seguida, chame novoArray novamente no console do navegador para ver que foi alterado</p>-->
+
+      <p>Array.join() recebe como argumento um separador, converte todos os itens do array para suas versões string, e os combina
+        em uma string final onde todos os itens são separados pelo argumento dado (valores null e undefined viram strings vazias).
+      </p>
+      <div class="card">
+        <code class="language-javascript">meuArray.join(' + '); // retorna "1 + 2 + 3 + 4 + true"</code>
+      </div>
+    </div>
+
+    <h3 id='maps'>Maps</h3>
+    <p>É possivel criar maps da seguinte forma</p>
+
+    <div class="card">
+      <code class="language-javascript">var meuMap = new Map(); // meuMap = {}</code>
+    </div>
+
+    <p>Adicionar chave e valor :</p>
+
+    <div class="card">
+      <code class="language-javascript">meuMap.set("minhaChave", "meuValor") // Map {"minhaChave" => "meuValor"}</code>
+    </div>
+
+    <p>Consultar valor :</p>
+
+    <div class="card">
+      <code class="language-javascript">meuMap.get("minhaChave") // retorna "meuValor"</code>
+    </div>
+
+    <p>Para alterar o valor em uma chave basta a inserir com o novo valor</p>
+    <div class="card">
+      <code class="language-javascript">meuMap.set("minhaChave", "novoValor") // Map {"minhaChave" => "novoValor"}</code>
+    </div>
+
+    <h3 id="estruturas-repeticao">Estruturas de repetição</h3>
+
+    <p>Javascript sendo uma lingua da familia C (sintaxe inspirada na linguagem C), possui estruturas de repetição com sintaxe
+      familiar.
+    </p>
+
+    <h4>For</h4>
+
+    <p>percorrer um array usando for :</p>
+
+    <pre>
+      <code class="language-javascript">
+        var meuArray = [1,2,3];
+        for(var i = 0; i < meuArray.length; i++) {
+              console.log(meuArray[i]);
+        }
+        // imprime no console : 1
+        //                      2
+        //                      3
+        </code >
+      </pre>
+
+      <h4>While</h4>
+
+      <p>Um exemplo de uso do while : </p>
+
+      <pre>
+        <code class="language-javascript">
+          var conta = 0;
+          while(conta < 10) {
+            console.log(conta);
+            conta ++;
+          }
+       </code >
+      </pre>
+
+      <h3 id="manipulando-dom">Manipulando o DOM</h3>
+      <p>Javascript possui uma api para criar encontrar, e manipular elementos html</p>
+
+      <p>Encontrando elementos : </p>
+
+      <p class="subparagraph">Por id</p>
+
+      <pre>
+        <code class="language-javascript">
+          var resultado = document.getElementById('variaveis');
+          // resultado se refere a 1, e somente 1 elemento html que possua um id correspondente
+          // Esse código retorna o titulo "Variáveis" dessa pagina.
+        </code>
+      </pre>
+
+      <p class="subparagraph">Por classe</p>
+
+      <pre>
+        <code class="language-javascript">
+          var resultado = document.getElementsByClassName('language-javascript');
+          // 'resultado' contém uma lista com todos os elementos que possuem a classe "language-javascript"
+          //  Você pode testar esse exemplo nessa pagina, ele retorna todas as seções com exemplos de código
+        </code>
+      </pre>
+
+      <p class="subparagraph">Por tag</p>
+      <pre>
+        <code class="language-javascript">
+          var resultado = document.getElementsByTagName('p');
+          // 'resultado' contém uma lista com todas tags &lt;p&gt;&lt;/p&gt;
+          //  Esse resultado retorna todas as tags p dessa pagina
+        </code>
+      </pre>
+
+
+      <p>Criando elementos com document.createElement() :</p>
+      <pre>
+        <code class="language-javascript">
+            var novaDiv = document.createElement('div'); // novaDiv agora se refere a uma instancia da tag &lt;div&gt;&lt;/div&gt;
+        </code>
+    </pre>
+
+    <p>Aninhando elementos com .appendChild() :</p>
+    <pre>
+      <code class="language-javascript">
+            var novaDiv = document.createElement('div'); // novaDiv = &lt;div&gt;&lt;/div&gt;
+            var novoP = document.createElement('p');     // novoP   = &lt;p&gt;&lt;/p&gt;
+            novaDiv.appendChild(novoP);                  // novaDiv = &lt;div&gt;
+                                                         //              &lt;p&gt;&lt;p&gt;
+                                                         //           &lt;div&gt;
+        </code>
+    </pre>
+
+    <p>Adicionando e removendo atributos de elementos html</p>
+    <p class="subparagraph">Adicionando atributos :</p>
+    <pre>
+      <code class="language-javascript">
+          var p = document.createElement('p');            // p = &lt;p&gt;&lt;/p&gt;
+          p.className = 'centralizar';                    // p = &lt;p class="centralizar"&gt;&lt;/p&gt;
+      </code>
+    </pre>
+
+    <p class="subparagraph">Ou  usando setAttribute() :</p>
+
+       <pre>
+      <code class="language-javascript">
+          var p = document.createElement('p');            // p = &lt;p&gt;&lt;/p&gt;
+          p.setAttribute('class', 'centralizar');         // p = &lt;p class="centralizar"&gt;&lt;/p&gt;
+      </code>
+    </pre>
+
+    <pre>
+      <code class="language-javascript">
+          var p = document.createElement('p');            // p = &lt;p&gt;&lt;/p&gt;
+          p.setAttribute('id', 'idUnico');                // p = &lt;p id="idUnico"&gt;&lt;/p&gt;
+      </code>
+    </pre>
+
+    <p>nem todos os atributos podem ser acessados e modificados diretamente como no primeiro exemplo
+      "<span class="subparagraph">(p.className = 'centralizar')</span>", o método setAttribute() oferece maior consistencia.</p>
+
+    <p class="subparagraph">Removendo atributos :</p>
+
+    <pre>
+      <code class="language-javascript">
+          var p = document.createElement('p');            // p = &lt;p&gt;&lt;/p&gt;
+          p.setAttribute('id', 'idUnico');                // p = &lt;p id="idUnico"&gt;&lt;/p&gt;
+          o.removeAttribute('id')                         // p = &lt;p&gt;&lt;/p&gt;
+      </code>
+    </pre>
+
+    <p class="subparagraph">Consultando atributos :</p>
+
+    <pre>
+      <code class="language-javascript">
+          var p = document.createElement('p');            // p = &lt;p&gt;&lt;/p&gt;
+          p.setAttribute('id', 'idUnico');                // p = &lt;p id="idUnico"&gt;&lt;/p&gt;
+          p.getAttribute('id');                           // retorna "idUnico"
+      </code>
+    </pre>
+
+    <h3 id="funcoes">Funções</h3>
+
+    <p>A criação de uma função segue a seguinte sintaxe : </p>
+
+    <pre>
+      <code class="language-javascript">
+          function minhaFuncao() {
+            console.log("opa, chamou?");
+          }
+
+          minhaFuncao() ; //  imprime "opa, chamou?" no console
+      </code>
+    </pre>
+
+    <h3 id="funcoes-primeira-ordem">Funções de primeira ordem</h3>
+
+    <p>Observe o exemplo abaixo</p>
+
+    <pre>
+      <code class="language-javascript">
+          function executarFuncao(funcao){
+            funcao();
+          }
+
+          executarFuncao(minhaFuncao); //  imprime "opa, chamou?" no console
+      </code>
+    </pre>
+
+    <p>Esse exemplo faz uso da função chamada "minhaFuncao" que criamos no exemplo anterior. "executarFuncao" é uma função que recebe como parâmetro uma outra função, e a executa.</p>
+    <p>Isso é uma demostração do uso de funções de primeira ordem ( ou primeira classe, ou ainda alta ordem, você vai se deparar com várias nomeclaturas).</p>
+    <p>Quando nos referimos a um termo na programação como sendo um termo de primeira ordem, queremos dizer que ele pode ser passado como parâmetro para uma função,
+       bem como ser retornado por uma função e também atribuído a uma variável.</p>
+    <p>Em javascript nós faremos uso frequente dessa propriedade, por exemplo em event listeners que veremos a seguir.</p>
+
+    <h3 id="respondendo-eventos">Respondendo a eventos</h3>
+
+    <p>Para responder a cliques em botões, e a centenas de outros eventos, nós usamos os EventListeners</p>
+
+    <p>Encontrando um botão na pagina e adicionando um EventListener</p>
+
+    <pre class="line-numbers">
+      <code class="language-javascript">
+          var btn = document.getElementById('btnExample');     // btn corresponde ao botão encontrado ("Mostrar Alert")
+          btn.addEventListener("click", function(){            // adicionamos um EventListener que aguarda um clique com botão esquerdo do mouse
+            alert("Nada pra ver aqui, pode continuar u.u");    // respondemos ao evento exibindo um aviso
+          });
+      </code>
+    </pre>
+    <button type="button" id="btnExample" >Mostrar Alert</button>
+
+    <p>Vamos analisar esse exemplo linha por linha</p>
+
+    <p>Na linha numero 2 encontramos o botão e armazenamos na variável btn.</p>
+
+    <p>Na linha  3 é invocada uma função chamada addEventListener, que recebe o evento a ser observado(que queremos responder),
+       e uma função contendo o que queremos fazer em resposta a esse evento.</p>
+
+    <p>A linha 4 possui o unico comando da nossa função de resposta, um alerta com uma mensagem simpática.</p>
+
+    <p>Percebeu que um dos parâmetros que passamos para a função addEventListener é uma função? Isso é um exemplo de função atuando como termo de primeira ordem,
+       outra aplicação seria retornar uma função ou atribuir uma função a uma variavel.</p>
+    <p>EventListeners são o exemplo de uso de funções de primeira ordem que usaremos com mais frequência,
+       pois são uteis para dar comportamento a aplicações web, dando a possibilidade de interação com o usuario.</p>
+
+
+
+    <script src="third_libs/prism.js"></script>
+    <script type="text/javascript">
+        document.getElementById('btnExample').addEventListener('click', () => alert("Nada pra ver aqui, pode continuar u.u"));
+    </script>
+  </div>
+</body>
+
+</html>
